@@ -198,8 +198,8 @@ def review_prompt(unit, section_md):
 出力：accepted（blocker/major の指摘がなければ true）、findings（severity は blocker/major/minor、issue に問題、suggestion に修正案）。指摘がなければ空配列。"""
 
 
-def revise_prompt(unit, section_md, findings):
-    return f"""あなたは Minecraft MOD「The Understory」の数値設計者。以下の設計をレビュー指摘に基づき改訂せよ。全体を書き直すのではなく、指摘箇所を正確に修正した完成版を出力せよ。棄却する指摘には理由を明記（open_questions に記す）。
+def revise_prompt(unit, section_md, findings, retry_note=""):
+    return f"""あなたは Minecraft MOD「The Understory」の数値設計者。以下の設計をレビュー指摘に基づき改訂せよ。全体を書き直すのではなく、指摘箇所を正確に修正した完成版を出力せよ。棄却する指摘には理由を明記（open_questions に記す）。{retry_note}
 
 {MUST_READ}
 
@@ -267,8 +267,11 @@ async def unit_flow(unit, inventory):
             return {"unit": unit["id"], "title": unit["title"], "section_md": section_md, "open_questions": open_qs + "\n[レビュー未解決の指摘あり]"}
         previous_findings = findings_key
         log(f"{unit['id']}: ラウンド{r+1}で指摘{len(blocking)}件——改訂へ")
+        # gear_devices の r2 revise は中断時に子セッションが死亡し「paused child could not be woken」で固着したため、
+        # 当該コールのみプロンプトに識別子を混ぜてハッシュを変え、新規セッションに振り替える（他コールの再生を維持）。
+        _retry_note = "（中断からの再実行：同一内容で新規ドラフトとして処理せよ）" if unit["id"] == "gear_devices" and r == 1 else ""
         draft2 = await agent_retry(
-            revise_prompt(unit, section_md, review["findings"]),
+            revise_prompt(unit, section_md, review["findings"], retry_note=_retry_note),
             phase="revise", label=f"revise-{unit['id']}-r{r+1}",
             schema=SECTION_SCHEMA, repos=[REPO], soft_time_limit_minutes=45,
         )
