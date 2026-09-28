@@ -11,7 +11,7 @@
 | [01_moon_forest.md](01_moon_forest.md) | 第1章「満ちなかった月の林」 | 絵本 | 温かい奇妙さ→静かな哀愁 | 月欠狼／月見翁 |
 | [02_unread_harbor.md](02_unread_harbor.md) | 第2章「読まれなかった港」 | 書簡体 | 孤独・静寂→頼られる温かさ | 未読の座礁船／灯台守（読む者） |
 | [03_unheld_square.md](03_unheld_square.md) | 第3章「踊らなかった広場」 | 戯曲 | 滑稽・歓楽→不意の喪失 | 中止の人形劇／祭囃子 |
-| [04_unchosen_mine.md](04_unchosen_mine.md) | 第4章「選ばれなかった坑道」 | 日誌 | 不明瞭な恐怖→労働の尊厳 | 殻の集塊／鍛冶師 |
+| [04_unchosen_mine.md](04_unchosen_mine.md) | 第4章「選ばれなかった坑道」 | 日誌 | 不明瞭な恐怖→労働の尊厳 | 棄材のゴーレム（旧称：殻の集塊）／鍛冶師 |
 | [05_unsung_tower.md](05_unsung_tower.md) | 第5章「歌えなかった塔」 | 詩 | 畏怖・荘厳 | 無音の歌姫／歌姫 |
 | [06_final_seat.md](06_final_seat.md) | 終章「原案の座」 | —（全形式の収束） | 終わりの重さ | 原案の王／落慮王・ノミ・前任 |
 
