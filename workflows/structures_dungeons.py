@@ -1,5 +1,6 @@
 import asyncio
 import json
+import os
 
 REPO = "hi-lee-mon/the-understory"
 
@@ -337,7 +338,16 @@ async def main():
         "units": results,
         "crosscheck": {"coverage": cov_check, "forms": form_check, "canon": canon_check},
     }
-    log(f"=== 完了 ===\n{json.dumps(output, ensure_ascii=False)}")
+    outdir = "/home/ubuntu/repos/the-understory/.devin-work/issue2"
+    os.makedirs(outdir, exist_ok=True)
+    with open(f"{outdir}/inventory.md", "w", encoding="utf-8") as f:
+        f.write(inventory)
+    for r in results:
+        with open(f"{outdir}/{r['unit']}.json", "w", encoding="utf-8") as f:
+            json.dump(r, f, ensure_ascii=False, indent=1)
+    with open(f"{outdir}/crosscheck.json", "w", encoding="utf-8") as f:
+        json.dump(output["crosscheck"], f, ensure_ascii=False, indent=1)
+    log(f"=== 完了 === {outdir} に {len(results)} ユニット＋横断監査を書き出し")
 
 
 asyncio.run(main())
