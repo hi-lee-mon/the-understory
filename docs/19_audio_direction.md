@@ -299,6 +299,7 @@ understory.<領域>.<主体>.<動作>
 |---|---|---|---|---|---|---|---|---|---|---|
 | `understory.ambient.forest_moon.bed` | 林：静まる **（新規）** | AMBIENT | false | stereo | 世界 | 01 の環境床 | 月齢林の静まり——夜の林・微かな気配音の疑似ループ | 共有 | SE-AMB-01 | 34/01 |
 | `understory.world.moon.phase` | 月：移る | AMBIENT | false | stereo | 世界 | 月齢転相（環境イベント＋ボス周期マーカー兼用） | 月齢 SE 型の短い推移音 | 共有 | SE-MOON-01 | 34/01・38/03 §4.4 |
+| `understory.world.moonroot.open` | 没腐の根：開く **（新規）** | BLOCKS | false | mono | 世界 | 没腐の根の遮光節の開閉（月光の筋照射で開く月齢 teach ギミック——繰り返し発火イベント） | 木質系の開き動作音——月齢 SE でなく根そのものの動作音 | 共有 | SE-MOON-02 | 40-Q26 承認（2026-10-03）・34/01 §3.2・16 §4.1.3 |
 
 （01 のキュー音＝`event.moon.cue_*`＝§3.2.1、ボス音＝§3.4 を参照）
 
@@ -432,6 +433,7 @@ understory.<領域>.<主体>.<動作>
 | 水面：着く | `event.transit.land` | 正典系 |
 | 淀み：響く | `world.silt.hollow` | 正典 |
 | 淀み：割れる | `event.silt.crack` | 正典系 |
+| 没腐の根：開く | `world.moonroot.open` | 新規（40-Q26 承認・2026-10-03） |
 | 環礁：鳴る | `event.rescue.return` | 新規 |
 | 打鍵：遠くで響く | `ambient.forge.bed` | 正典（18 §5.6） |
 | 打鍵：届く | `event.forge.final` | 正典（34/04 §5「届いた一打ち」） |
