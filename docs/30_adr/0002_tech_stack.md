@@ -1,8 +1,8 @@
 # ADR-0002: 技術基盤 NeoForge / Minecraft 1.21.1 / Java 21
 
-- Status: Proposed（要ユーザー承認）
-- Date: 2025-XX
-- Deciders: Devin提案 → ユーザー承認待ち
+- Status: Accepted（2026-10-05 ユーザー承認——Issue #7 要承認 42-U4-Q6 採用により昇格）
+- Date: 2025-XX（Accepted: 2026-10-05）
+- Deciders: Devin提案 → ユーザー承認（2026-10-05）
 - Related: docs/02_research_mod_landscape.md（技術選定の根拠調査）
 
 ## Context
@@ -24,3 +24,4 @@
 - Iris+シェーダー・Distant Horizonsとの互換検証が必須（`20` 要件）
 - NeoForgeのAPI変更追従コストを見込む（保守方針を別途決める）
 - Fabric版は出さない（スコープ限定、ユーザー層への説明が必要）
+- **保守方針（2026-10-05 承認・Issue #7 42-U3-Q2）**：スライス〜公開アルファ期は MC 1.21.1 固定とし、新バージョンへの移植可否の評価はリリース計画（Issue #8・docs/43）で行う。Phase 3 以降の継続保守方針は同評価を起点に策定する。
