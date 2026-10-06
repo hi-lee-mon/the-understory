@@ -1,5 +1,7 @@
 # The Understory（棄てられたものの国）
 
+[English README is available here](README.en.md)
+
 第2の「黄昏の森」を目指す Minecraft 大型次元MOD——選ばれなかったもの・消されたものが流れ着く国で、棄てられた物語の結末を書き換える。
 
 ターゲット：YouTuber/VTuber。章＝配信エピソード構造。オーバーワールド↔国の双方向往来。NeoForge / MC 1.21.1 / Java 21（予定）。
