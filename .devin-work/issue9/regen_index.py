@@ -1,4 +1,5 @@
-# docs/44 §6 五十音順総索引の再生成（独立検証 findings 2/9/10/11/15 対応）
+# docs/44 §6 五十音順総索引の再生成（独立検証 findings 2/9/10/11/15・2巡目 minor/nit 対応）
+# 依存: janome（形態素解析）——`python3 -m pip install janome` が必要
 import re, unicodedata
 from janome.tokenizer import Tokenizer
 
@@ -23,13 +24,21 @@ def est_reading(term):
         out.append(kata2hira(r))
     return "".join(out)
 
-# 推定読みの正典既知上書き（検証指摘＋正典ふりがな由来）
+# 推定読みの正典既知上書き（検証指摘＋正典ふりがな由来・兄弟語の確定読みからの合成）
 OVR = {
     "名づけられたごみ処理場": "なづけられたごみしょりば",  # ごみ処理場＝ごみしょりば（docs/23 §8.3）
     "端到端": "えんたんえん",
     "正本": "しょうほん",
     "正本節": "しょうほんせつ",
     "楽堂（きき手のいないホール）": "がくどう",
+    "行種別": "ぎょうしゅべつ",
+    "参照行": "さんしょうぎょう",
+    "リスク行": "りすくぎょう",
+    "暫定値／暫定閾値": "ざんていち／ざんていいきち",
+    "本書の採番": "ほんしょのさいばん",
+    "村の共同の捨て場": "むらのきょうどうのすてば",  # 捨て場＝すてば（§2.1 捨て場行の正典読み）
+    "梱包された届け物（往路）": "こんぽうされたとどけもの",  # 届け物＝とどけもの（届け物袋の正典読み）
+    "名を持つ没素材": "なをもつぼっそざい",  # 没素材＝ぼっそざい（§1.6-c 没素材行）
 }
 
 SMALL = "ぁぃぅぇぉっゃゅょゎ"
@@ -128,7 +137,9 @@ for term, reading, note, own, canon, is_ref in rows:
     rcell = reading
     if rcell in ("—", "（正典未記）", "", "（推定）"):
         est = OVR.get(term) or est_reading(term)
-        disp = f"（推定：{est}）"
+        # 推定値に仮名を含まない（純 ASCII・数字頭で表層の繰り返しのみ）は読み情報ゼロ——「—」に戻す
+        has_kana = any("あ" <= c <= "ん" for c in kata2hira(est))
+        disp = f"（推定：{est}）" if has_kana else "—"
         key = sort_key(est)
     else:
         disp = rcell
