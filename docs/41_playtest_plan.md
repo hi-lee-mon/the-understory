@@ -314,7 +314,7 @@ docs/58 §3 の設計原則を本節へは以下の形で落とす：
 | イベント名 | 発火点 | 主要フィールド | 対応検証 |
 |---|---|---|---|
 | `navigation.lost.start` | 迷子判定発火（一次導線の勾配圏外で90秒滞留、または未消化の淀み地点が残る状態での同一地点周回） | trigger_type（dwell_90s/loop_silt）・区画ID | E-5・40-Q7② |
-| `navigation.lost.recover` | 迷子からの主線復帰 | via（env_represent/device_compass/nomi_voice/final_stage） | E-5 回帰手段 |
+| `navigation.lost.recover` | 迷子からの主線復帰 | via（env_represent/device_compass/nomi_voice/final_stage）——final_stage 発火条件は 63-U2-Q1 で確定：累計270秒超過または同一区画2回目（enhanced＝180秒。docs/63 §4.3） | E-5 回帰手段 |
 | `navigation.lost.final_stage` | 最終段（明示増強）への到達 | 区画ID | E-5（到達0人判定） |
 
 ※迷子判定の検出実装（勾配圏の境界・淀み消化状況の把握方法）は計測器設計（Phase 1・41-U2-Q3）に委ね、本一覧は発火の論理定義のみを権威とする。**「同一地点」の運用定義＝発火座標の属する場所系列の区画ID が一致**（二度目の迷子判定＝同一区画IDでの `navigation.lost.start` 2回目以降）。
