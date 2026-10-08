@@ -327,6 +327,8 @@ async def main():
         "units": results,
         "crosscheck": {"consistency": consistency_check, "coverage": cov_check, "dramaturgy": dramaturgy_check},
     }
+    with open("/home/ubuntu/repos/the-understory/.devin-work/issue11/workflow_output.json", "w") as f:
+        json.dump(output, f, ensure_ascii=False)
     log(f"=== 完了 ===\n{json.dumps(output, ensure_ascii=False)}")
 
 
