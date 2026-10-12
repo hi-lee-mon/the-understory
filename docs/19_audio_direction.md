@@ -216,7 +216,7 @@ understory.<領域>.<主体>.<動作>
 | `understory.ui.notify.release` | 鐘：鳴る | UI | false | stereo | 器 | 図鑑頁・要素の解放通知 Toast | かすれた鐘・音量小・残響短め | 個別 | SE-BELL-UI | 18 §2.5.1 解放型・§5.8 |
 | `understory.ui.notify.bulletin` | 村報：発行される | UI | false | stereo | 器 | 村報の新号発行通知 | 綴じ音＋紙擦れの連なり ≈0.8s | 共有（各人端末へ） | SE-POST-01 | 18 §2.5.1・§3.6・32 §6 |
 | `understory.ui.nomi.narrate` | ノミ：語る | UI／VOICE 保留（19-U1-Q1 連動・不採用時の代替＝UI） | false | stereo | 器 | 予告頁交付の語り再生 | 「声らしきもの」気配——音節的な短い声の気配で構成（VO 不採用時） | 個別 | SE-NOMI-02 | 18 §3.4・§2.6.3 |
-| `understory.world.bin.insert` | 物：落ちる **（新規）** | BLOCKS | false | mono | 世界 | ゴミ箱への投入 | 木軋み＋物が底に落ちる軽い残響 ≈0.5s | 共有 | SE-BIN-01 | 23 §11・18 §5.6 列挙 |
+| `understory.world.bin.insert` | 物：落ちる **（新規）** | BLOCKS | false | mono | 世界 | ゴミ箱への投入＋共同堆積の自分の区画への返却（51-U1-Q8 承認済み） | 木軋み＋物が底に落ちる軽い残響 ≈0.5s | 共有 | SE-BIN-01 | 23 §11・18 §5.6 列挙 |
 | `understory.world.bin.lid` | 箱：軋む | BLOCKS | false | mono | 世界 | 箱の蓋の開閉（投入口・着弾気づき） | 木軋み＋蓋の微かな動き ≈0.4s | 共有 | SE-BIN-02 | 18 §1.5.2・23 §11 |
 | `understory.world.bin.arrive` | ゴミ箱：鳴る | BLOCKS | false | mono | 世界 | 届きものの箱への着弾（返礼・住人便・誤配・最後の手紙含む） | 木箱内に物が落ちる鈍い一音＋小さな紙擦れ ≈0.6s | 個別（自分の箱）／共同箱＝共有（近傍のみ・遠方は Toast——19-U2-Q5） | SE-DLV-01 | 18 §5.8・§2.5.1・23 §7・32 §6 |
 | `understory.world.bin.sink` | 物：沈む | PLAYERS | false | stereo | 器（世界内・本人返答） | 投入した物が国へ流れ着く（投入者のみ） | 国へ落ちる音＋下方へ伸びる残響尾 1.0〜1.5s | 個別 | SE-TR-02 | 23 §10/§11 |
@@ -250,13 +250,15 @@ understory.<領域>.<主体>.<動作>
 | `understory.event.transit.break` | 世界：壊れる | AMBIENT | false | stereo | 世界 | 転移暗転中の世界破壊音（ゴミ箱転移・異物欠損接触の片道転移に共通使用） | 逆再生感＋落下感＋残響の尾 2.5〜3.0s | 個別 | SE-TR-01b | 50 Beat 2・11 §4 |
 | `understory.event.transit.land` | 水面：着く | BLOCKS | false | mono | 世界 | 転移着地——着弾点の初景音 | 着水・着地の実音＋環境床の立ち上がり ≈1.5s | 個別 | SE-TR-01c | 50 Beat 2 |
 | `understory.event.transit.open` | 蓋：開く | BLOCKS | false | mono | 世界 | 転移先の箱の蓋が開く | 木蓋の開く軋み ≈0.5s | 個別 | SE-TR-01d | 50 Beat 2 |
+
+> **帰還転移（国→現実）も transit 4連を同型転用**（close→break→land→open——51-U1-Q1・51-U4-Q2 承認済み・新規 SE 不採用）。「壊れる間」の実長は `break`〜`land` の一拍＝SE4連の実測値に従属（51-U4-Q1 承認済み——実数値は docs/38/03 §4.3 側で着地）。
 | `understory.event.silt.crack` | 淀み：割れる | BLOCKS | false | mono | 世界 | 淀みの窪地の割れ・消化イベント | 淀んだものが割れる湿った音 | 共有 | SE-YOD-02 | 34/00・45/04 §5.3 |
 | `understory.event.rescue.return` | 環礁：鳴る | AMBIENT | false | stereo | 世界 | 救出復帰——環礁の音が戻る一拍 | 環礁固有音の一斉復帰（床＋定位音の立ち上がり） | 共有 | SE-EVT-02 | 34/05・45/02 §7 |
 | `understory.event.forge.final` | 打鍵：届く | BLOCKS | true | mono | 世界 | 04 終幕の一打ち——最深部から届く | 遠い打鍵の正体が届く一打ち | 共有 | SE-HAMMER-FIN | 34/04 §5 |
 | `understory.event.letter.final` | 手紙：届く | BLOCKS | false | mono | 世界 | 最後の手紙の着弾（K9/K10——現実のプレイヤーのゴミ箱へ） | 着弾音＋紙擦れ（bin.arrive と同族・別登録で結末の特別感を持たせる） | 個別 | SE-DLV-03 | 34/06 §6.3・§7.3・18 §5.8 |
 | `understory.event.mechanism.release` | 機構：緩む | AMBIENT | false | mono | 世界 | 03 救出——指揮台の機構が緩む | 歯車・発条の緩む実音 | 共有 | SE-EVT-03 | 34/03 §6 |
 | `understory.event.silence.dome` | 音：消える | AMBIENT | false | stereo | 世界 | 06 段 5 沈黙の域への突入の一拍（フェードアウトの可聴化＋字幕——**沈黙中は字幕なし**） | 全音が減衰して消える 1.5〜2.0s の境界イベント | 共有 | SE-EVT-04 | 38/03 §4.6・U3-N7・G-AU-03 例外注記 |
-| `understory.event.light.fold` | 灯り：畳まれる | AMBIENT | false | mono | 世界 | 章の灯りの畳み（救出後変化・幕の余韻） | 灯りの光が畳まれる軽い実音——各灯りごとに逐次 | 共有 | SE-EVT-05 | 34/02・45/02 |
+| `understory.event.light.fold` | 灯り：畳まれる | AMBIENT | false | mono | 世界 | 章の灯りの畳み（救出後変化・幕の余韻——01 結末B「宵の実が灯る」には不適合・同演出は SE 割当なしで無音の環境差分＝51-U2-Q10 承認済み） | 灯りの光が畳まれる軽い実音——各灯りごとに逐次 | 共有 | SE-EVT-05 | 34/02・45/02 |
 | `understory.event.mark.stamp` | 印：打たれる | AMBIENT | false | stereo | 世界 | 06「書き換える」確定の頁への印 | 印を押す乾いた一音 | 共有 | SE-EVT-06 | 34/06 §5 |
 | `understory.event.depth.answer` | 底：応える | AMBIENT | false | stereo | 世界 | 座の開放——最深部からの応答 | 第三領域の深い共鳴 | 共有 | SE-EVT-07 | 34/06 §3 |
 | `understory.event.phantom.scene` | 幻影：展開する | AMBIENT | false | stereo | 世界 | 06 段 4 幻影の展開（借用章の音の残影を含む） | 過去章の音色の幽かな残影の重なり | 共有 | SE-EVT-08 | 38/03 §4.6 |
@@ -289,7 +291,7 @@ understory.<領域>.<主体>.<動作>
 |---|---|---|---|---|---|---|---|---|---|---|
 | `understory.ambient.wave_raspy.bed` | 波：砕ける | AMBIENT | false | stereo | 世界 | 序章の環境床 | かすれた波の疑似ループ（10〜30s 素材の重なり再生） | 共有 | SE-AMB-00 | 34/00・§2.4 |
 | `understory.world.pickup.aura` | 拾得物：微かに鳴る **（新規）** | BLOCKS | false | mono | 世界 | 拾得トークン（世界配置の拾得物）への接近気配 | かすれた小鐘系の微かな共鳴——通知音より一段静か | 個別 | SE-TOK-AURA | 45/04 §5.3・§2.3.2 |
-| `understory.world.presence.stir` | 何か：蠢く | AMBIENT | false | mono | 世界 | 淀みの窪地への接近気配 | 微かな蠢き——正体不明の気配 | 個別（接近者） | SE-YOD-03 | 34/00・45/04 §5.3 |
+| `understory.world.presence.stir` | 何か：蠢く | AMBIENT | false | mono | 世界 | 淀みの窪地への接近気配＋序章浜の気配点（着弾初景の視界端・共同堆積の自分の区画への踏み込み——51-U1-Q8 承認済み） | 微かな蠢き——正体不明の気配 | 個別（接近者） | SE-YOD-03 | 34/00・45/04 §5.3 |
 | `understory.world.silt.hollow` | 淀み：響く | AMBIENT | false | mono | 世界 | 淀みの窪地（全章共通の淀み音像・04 以降の没腐音の基盤） | 淀んだ低い共鳴の疑似ループ | 個別（接近者） | SE-YOD-01 | 18 §5.6・45/04 §5.2・38/04 §2 |
 | `understory.world.foreign.noise` | 何か：歪む | AMBIENT | false | mono | 世界 | 異物への近接ノイズ（接近で増す） | 異物の歪み気配——位相のずれた短いノイズ | 個別 | SE-TR-03a | 45/04 §5.2・G-AU-11 |
 | `understory.world.foreign.echo` | 昔の音：残響 | AMBIENT | false | mono | 世界 | 異物への接近継続・近傍での間欠 | かすれた昔の音の残響（MU-MOTIF-OLD 系の短い片鱗） | 個別 | SE-TR-03b | G-AU-11・34/04 §4 |
@@ -300,7 +302,7 @@ understory.<領域>.<主体>.<動作>
 |---|---|---|---|---|---|---|---|---|---|---|
 | `understory.ambient.forest_moon.bed` | 林：静まる **（新規）** | AMBIENT | false | stereo | 世界 | 01 の環境床 | 月齢林の静まり——夜の林・微かな気配音の疑似ループ | 共有 | SE-AMB-01 | 34/01 |
 | `understory.world.moon.phase` | 月：移る | AMBIENT | false | stereo | 世界 | 月齢転相（環境イベント＋ボス周期マーカー兼用） | 月齢 SE 型の短い推移音 | 共有 | SE-MOON-01 | 34/01・38/03 §4.4 |
-| `understory.world.moonroot.open` | 没腐の根：開く **（新規）** | BLOCKS | false | mono | 世界 | 没腐の根の遮光節の開閉（月光の筋照射で開く月齢 teach ギミック——繰り返し発火イベント） | 木質系の開き動作音——月齢 SE でなく根そのものの動作音 | 共有 | SE-MOON-02 | 40-Q26 承認（2026-10-03）・34/01 §3.2・16 §4.1.3 |
+| `understory.world.moonroot.open` | 没腐の根：開く **（新規）** | BLOCKS | false | mono | 世界 | 没腐の根の遮光節の開閉（月光の筋照射で開く月齢 teach ギミック——繰り返し発火イベント） | 木質系の開き動作音——月齢 SE でなく根そのものの動作音 | 共有 | SE-MOON-02 | 40-Q26 承認（2026-10-03）・34/01 §3.2・16 §4.1.3 ——**遮光節の開閉限定・帰り径開放への転用なし（帰り径は無音の造形差分＝51-U2-Q11 承認済み）** |
 
 （01 のキュー音＝`event.moon.cue_*`＝§3.2.1、ボス音＝§3.4 を参照）
 
@@ -365,7 +367,7 @@ understory.<領域>.<主体>.<動作>
 | `understory.mob.dancer.collapse` | 人形：崩れる | HOSTILE | false | mono | 世界 | 同・撃破時の崩落 | 木片の崩れる音 | 共有 | SE-MOB-05 | 38/04 |
 | `understory.mob.material.drag` | 素材：引きずる | HOSTILE | false | mono | 世界 | N-MOB-005 素材の精の移動 | 重い素材の引きずり音 | 共有 | SE-MOB-06 | 38/04 |
 | `understory.mob.eater.suck` | 間：喰われる **（新規）** | HOSTILE | false | mono | 世界 | N-MOB-007 間を喰う者の吸収予備（2.0s テレグラフ＋周辺 SE −30%） | 音が吸い込まれる渦音——吸収中は無防備（反撃窓の可読性のため発火する） | 共有 | SE-MOB-07 | 38/04 N-MOB-007 |
-| `understory.mob.resident.breathe` | 住人：息づく | NEUTRAL | false | mono | 世界 | N-MOB-008 中立住人の動き・気配 | 衣擦れ・気配の微音 | 共有 | SE-MOB-08 | 38/04 |
+| `understory.mob.resident.breathe` | 住人：息づく | NEUTRAL | false | mono | 世界 | N-MOB-008 中立住人の動き・気配＋村の住人（拾い人の翁・拾い子・名を持たない住人・縁の民・救出後住人——51-U3-Q13 承認済み） | 衣擦れ・気配の微音 | 共有 | SE-MOB-08 | 38/04 |
 | `understory.mob.resident.warp` | 住人：歪む | HOSTILE | false | mono | 世界 | N-MOB-009 敵対化住人 | 声にならない歪んだ気配 | 共有 | SE-MOB-09 | 38/04 |
 | `understory.mob.shape.stir` | 形：うごめく | HOSTILE | false | mono | 世界 | N-MOB-010 二度棄て形の動作 | 捨てられた形の蠢き | 共有 | SE-MOB-10 | 38/04 |
 | `understory.mob.ship.sail` | 帆：張る | HOSTILE | false | mono | 世界 | N-BOS-02 座礁船の帆の展開・攻撃予備 | 帆のはためき＋船体軋み | 共有 | SE-BOS-02 | 34/02 |
@@ -517,9 +519,15 @@ understory.<領域>.<主体>.<動作>
 
 **救出後変化**：序章に救出対象はなく、床は不変。
 
+### 4.1.5 村・月下の小島（村域・補助環礁）
+
+**村の環境床**：浜の `ambient.wave_raspy.bed` を村域で薄く継続（村固有床は設けない——51-U3-Q1 承認済み）。初救出後は `MU-TH-VIL`（村テーマ）の間欠のみを前景化。
+
+**月下の小島の環境床**：`ambient.wave_raspy.bed` の薄い継続（浜の外縁の補助環礁・固有床なし——51-U3-Q10 承認済み）。月の定位は `world.moon.phase`。
+
 ### 4.2 01 章（月齢の環礁）
 
-**環境音**：`ambient.forest_moon.bed`（林：静まる——夜の林の静けさ）。月齢転相は `world.moon.phase`（月：移る——環境イベント兼ボス周期マーカー）。
+**環境音**：`ambient.forest_moon.bed`（林：静まる——夜の林の静けさ）。月齢転相は `world.moon.phase`（月：移る——環境イベント兼ボス周期マーカー）。**救出後の転相音の継続は結末A側のみ**（結末Bでは月は欠けたまま止まる＝転相イベント自体が起きない——51-U2-Q12 承認済み・34/01 §6.3）。
 
 **章固有 SE**：キュー＝`event.moon.cue_*`（§3.2.1・月齢 SE 音色）。ボス＝§3.4 の `mob.wolf.howl`（月齢転相と同期）。
 
