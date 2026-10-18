@@ -428,6 +428,7 @@ understory.<領域>.<主体>.<動作>
 | 拍子：見得 | `event.*.cue_pose` | 正典系 |
 | 拍子：鳴り続ける | `ambient.beat.bed` | 正典 |
 | 拍子：合図／合わせる／鳴る | `mob.beat.cue`/`world.stall.clap`/`event.gate.beat` | 正典系 |
+| 頁：予告→05 の一音 | （me 演出パラメータ——SE 新設なし） | 52-U3-Q5 承認済み：予告頁→05 の語りは本文引用行を置かず、頁をめくる際に一音だけかすかに鳴る非テキスト演出（「……あ」の一音——docs/52 TX-00-AD05）。字幕名は登録しない |
 | 鐘：座に届く | `event.bell.final` | 新規（結末の一音——「届く」系） |
 | 鐘：渡る | `event.bell.sweep` | 新規 |
 | 大鐘：鳴る | `event.bell.great` | 新規（鐘楼・径の鐘と区別） |
