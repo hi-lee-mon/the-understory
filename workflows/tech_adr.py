@@ -168,7 +168,7 @@ def author_prompt(unit, inventory):
 - まず docs/68 §3 の原則 P-ADR-01〜06（出典明記・Consequences 3層・ADR 間接続・曖昧さの解消・要承認採番・README 更新は成果物）に載せてから、Context/Decision/Alternatives/Consequences に具体化する
 - docs/68 §5 のテンプレ構成に従う——Status=Proposed
 - Decision は「何を採用し、なぜか」を判定可能な言語で。「個別層が動いたとは何を指すか」「マルチで誰に何が見えるか」のような判定可能な言語化を含める（P-ADR-04）
-- 承認済み決定の出典 ID（57-U{n}-Q{m}・40-Q{n}・docs/NN §X）を Decision の各項目に明記（P-ADR-01）
+- 承認済み決定の出典 ID（57-U{{n}}-Q{{m}}・40-Q{{n}}・docs/NN §X）を Decision の各項目に明記（P-ADR-01）
 - 暫定値は「暫定・着地先」を明記。条件付き項（57-U2-Q11）は Consequences で発動条件つき記述（G-ADR-05/06）
 - 「正典で未規定」な点は、選択肢＋推奨案つきで open_questions へ `12-U{{n}}-Q{{m}}` で起票（書き戻し先必須）
 - 既存 ADR-0001〜0005 の本文は触らない（immutable）
