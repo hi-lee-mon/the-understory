@@ -320,6 +320,8 @@ async def main():
         "units": results,
         "crosscheck": {"consistency": consistency_check, "coverage": cov_check, "quality": quality_check},
     }
+    import os
+    os.makedirs("/home/ubuntu/repos/the-understory/.devin-work/issue17", exist_ok=True)
     with open("/home/ubuntu/repos/the-understory/.devin-work/issue17/workflow_output.json", "w") as f:
         json.dump(output, f, ensure_ascii=False)
     log(f"=== 完了 ===\n{json.dumps(output, ensure_ascii=False)}")
