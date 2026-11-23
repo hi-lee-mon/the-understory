@@ -4,6 +4,8 @@
 
 ## 1. ドキュメント体系（本プロジェクトの設計図一式）
 
+> **対応注記（Issue #1 横断監査 X-02・2026-11-23）**：本節は計画時の文書名。実ファイルとの対応——`18_ui_ux.md`＝`18_ui_ux_detail.md`・`20_art_direction.md`＝`20_art_ui_design_system.md`・`31_technical_design.md`＝未作成（技術設計は ADR-0006〜0010＋`57_tech_verification_plan.md` が担う）。現行の文書体系は docs/ の実ファイルを正とする。
+
 ### A. 概念・方向性（実施済み/一部）
 - [x] `00_development_plan.md` 開発計画・フェーズ・工程
 - [x] `01_research_game_fun.md` 面白さの心理学・設計原則

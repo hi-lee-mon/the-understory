@@ -16,6 +16,8 @@
 
 ### Phase 0：設計（本フェーズ — 最も重い）
 成果物：
+> **対応注記（Issue #1 横断監査 X-02・2026-11-23）**：以下は Phase 0 開始時の計画上の文書名。現行の文書体系は docs/ の実ファイルを正とする——方向性決定＝`04_direction_decision.md`・世界設定＝`11_world_bible.md`・ストーリー＝`12_story_outline.md`＋`34_chapter_plots/`・進行＝`13_progression_map.md`・アイテム/クラフト＝`14_items_crafting.md`＋`38_numeric_tables/`・ボス/モブ＝`15_mobs_bosses.md`＋`38_numeric_tables/`・配信＝`17_streaming_design.md`＋`70_streaming_detail/`・ADR＝`30_adr/`。
+
 - `01_research_game_fun.md` ✅（面白さの心理学・設計原則）
 - `02_research_mod_landscape.md` ✅（成功MOD分析・技術選定）
 - `03_concept_directions.md` ✅（方向性4案）
